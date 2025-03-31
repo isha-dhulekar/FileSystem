@@ -30,12 +30,12 @@ void findAndCopyF1Files(const fs::path& rootDir, const fs::path& destDir)
 
     // Find all image files in f1 folders
     for (const auto& entry : fs::recursive_directory_iterator(rootDir)) {
-        if (entry.is_directory() && entry.path().filename() == "RUV113") {
+        if (entry.is_directory() && entry.path().filename() == "RUV168") {
 
             for (const auto& subentry : fs::recursive_directory_iterator(entry.path())) {
                 if (subentry.is_directory() && subentry.path().filename() == "MARK") {
                     // For each f1 folder, find image files
-                    for (const auto& file : fs::directory_iterator(entry.path())) {
+                    for (const auto& file : fs::directory_iterator(subentry.path())) {
                         if (file.is_regular_file()) {
                             std::string ext = file.path().extension().string();
                             // Common image extensions
@@ -75,8 +75,8 @@ void findAndCopyF1Files(const fs::path& rootDir, const fs::path& destDir)
 int main()
 {
     // Set your root directory and destination directory
-    std::string rootDirectory = R"(D:\Result\2025\3\7)";  // Change this to your main folder path
-    std::string destinationDirectory = R"(F:\PCデータ\出口_PC\業務\THK(三重)\クロスローラーリング\THK三重　クロスローラ（客先から送付された画像データー）\20250310\RUV168)";  // Change to your destination folder
+    std::string rootDirectory = R"(D:\Result\2025\3\26)";  // Change this to your main folder path
+    std::string destinationDirectory = R"(E:\)";  // Change to your destination folder
 
     try {
         // Ensure the destination directory exists
